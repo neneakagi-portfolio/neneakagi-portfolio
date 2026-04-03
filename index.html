@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>朱樹 音々</title>
+
+    <!-- OGP Settings -->
+    <meta property="og:title" content="朱樹 音々 | Inner Vision Photography">
+    <meta property="og:description" content="写真を通して内面を可視化するフォトセラピーの表現">
+    <meta property="og:image" content="images/ogp.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://neneakagi.com">
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fff;
+            color: #444;
+            /* 柔らかいグレーで上品に */
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        /* 2. メニューバー */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 2000;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .global-nav {
+            position: fixed;
+            top: 24px;
+            right: 32px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 12px;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-switch button {
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+            border: 1px solid #eee;
+            padding: 4px 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .lang-switch button:hover {
+            opacity: 0.6;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(6px);
+            padding: 10px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-links li a {
+            color: #777;
+            /* 薄いグレー、青にしない */
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            /* 折り返さない */
+        }
+
+        .nav-links li a:hover {
+            opacity: 0.4;
+            /* ホバー時のみ少し透明度が変化 */
+        }
+
+        /* 1. TOP Hero */
+        #top {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: block;
+        }
+
+        #top img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 共通セクション設定 */
+        section {
+            padding: 120px 8%;
+            max-width: 1200px;
+            /* 余白を活かす */
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 500;
+            color: #666;
+            margin: 0 0 48px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ABOUT & PROJECT (2カラム設定) */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .text-content {
+            text-align: left;
+            /* 読みやすい左寄せ */
+        }
+
+        .name-ja {
+            font-size: 2.8rem;
+            margin: 0 0 12px;
+            line-height: 1.2;
+            letter-spacing: 0.05em;
+            color: #333;
+        }
+
+        .role-ja {
+            font-size: 1rem;
+            margin: 0 0 40px;
+            color: #777;
+            letter-spacing: 0.05em;
+        }
+
+        .about-lead {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 0 0 32px;
+            line-height: 1.6;
+            letter-spacing: 0.05em;
+            color: #333;
+        }
+
+        .body-copy {
+            font-size: 1rem;
+            line-height: 2;
+            color: #555;
+            margin: 0 0 24px;
+            text-align: left;
+        }
+
+        .body-copy:last-child {
+            margin-bottom: 0;
+        }
+
+        .photo-wrapper {
+            width: 100%;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        /* 5. PORTFOLIO */
+        #portfolio {
+            max-width: 100%;
+            padding: 120px 0;
+            /* 共通の8%の左右余白などを解除し最大化 */
+        }
+
+        .portfolio-title {
+            text-align: right;
+            max-width: 1200px;
+            margin: 0 auto 48px;
+            padding: 0 4%;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 4%;
+            /* スマホでは最低限の余白、PCでは画面幅をフル活用 */
+            align-items: start;
+        }
+
+        .work-card {
+            width: 100%;
+        }
+
+        .work-card a {
+            display: block;
+            border: none;
+            text-decoration: none;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .work-card img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .work-card a:hover img {
+            transform: scale(1.02);
+            /* ホバー時の上品な挙動 */
+        }
+
+        .work-card h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 0 0 8px;
+            color: #333;
+            text-align: left;
+            /* タイトル左寄せ */
+        }
+
+        .work-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.7;
+            text-align: left;
+            /* キャプション左寄せ */
+        }
+
+        /* 6. BIOGRAPHY */
+        .biography h2 {
+            margin-bottom: 40px;
+        }
+
+        .bio-title-large {
+            text-align: center;
+            font-size: 2.4rem;
+            /* いまより大きく、中央配置 */
+            font-weight: 300;
+            margin-bottom: 80px;
+            color: #222;
+            letter-spacing: 0.05em;
+        }
+
+        .bio-table {
+            width: 100%;
+            border-collapse: collapse;
+            line-height: 1.4;
+            /* 行間を詰める */
+        }
+
+        /* 年表のボーダーで余白・読みやすさを整える */
+        .bio-table td {
+            padding: 10px 0;
+            vertical-align: top;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        .bio-table tr:first-child td {
+            border-top: 1px solid #f2f2f2;
+        }
+
+        .bio-table .date {
+            width: 140px;
+            font-weight: 500;
+            color: #555;
+            padding-right: 24px;
+        }
+
+        /* 7. CONTACT */
+        .contact {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 0 80px;
+        }
+
+        .contact-title-large {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 300;
+            margin-bottom: 32px;
+            color: #222;
+            letter-spacing: 0.05em;
+        }
+
+        .contact p {
+            font-size: 1rem;
+            margin: 0 auto 56px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 100px;
+            flex-wrap: wrap;
+            /* 念のため */
+        }
+
+        .contact-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 1.8rem;
+            /* 大きめのアイコンサイズ */
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #fafafa;
+            /* アイコン背景わずかに色付け */
+        }
+
+        .contact-links a:hover {
+            opacity: 0.5;
+            background: #f0f0f0;
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+            letter-spacing: 0.1em;
+        }
+
+        /* -------------------------------------
+           8. スマホ対応 (max-width: 640px)
+        -------------------------------------- */
+        @media (max-width: 1024px) {
+            .two-column {
+                gap: 50px;
+            }
+
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 16px;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #top {
+                height: 60vh;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            /* スマホで横からスライドするメニューに変更 */
+            .global-nav {
+                top: 0;
+                right: -100%;
+                left: auto;
+                width: 70%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.05);
+                padding: 60px 20px 40px;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 24px;
+                transition: right 0.3s ease;
+                border-bottom: none;
+            }
+
+            .global-nav.active {
+                right: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+                padding: 0;
+                width: 100%;
+                background: none;
+                box-shadow: none;
+                overflow: visible;
+            }
+
+            .nav-links li a {
+                font-size: 1.2rem;
+            }
+
+            .nav-links::-webkit-scrollbar {
+                display: none;
+            }
+
+            section {
+                /* 余白を広めにして読みやすくする */
+                padding: 100px 6%;
+            }
+
+            .two-column {
+                /* 2カラムを1カラムにする */
+                grid-template-columns: 1fr;
+                gap: 56px;
+            }
+
+            .portfolio-grid {
+                /* PORTFOLIOを1カラムにする */
+                grid-template-columns: 1fr;
+                gap: 64px;
+            }
+
+            .portfolio-title {
+                text-align: left;
+            }
+
+            .bio-title-large,
+            .contact-title-large {
+                font-size: 2rem;
+            }
+
+            .name-ja {
+                font-size: 2.2rem;
+            }
+
+            /* 年表のスマホ対応 */
+            .bio-table {
+                line-height: 1.3;
+                font-size: 0.9rem;
+            }
+
+            .bio-table tr {
+                display: block;
+                border-bottom: 1px solid #f2f2f2;
+                padding: 8px 0;
+            }
+
+            .bio-table tr:first-child td {
+                border-top: none;
+            }
+
+            .bio-table td {
+                display: block;
+                padding: 0;
+                border: none;
+            }
+
+            .bio-table .date {
+                padding-bottom: 4px;
+                color: #888;
+                font-size: 0.9rem;
+            }
+
+            .contact-links {
+                gap: 20px;
+                margin-bottom: 60px;
+            }
+
+            .contact-links a {
+                font-size: 1.5rem;
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* -------------------------------------
+           9. Modal (Portfolio)
+        -------------------------------------- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            color: #fff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 2001;
+            line-height: 1;
+        }
+
+        /* 背景スクロールロック */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="menu-toggle">☰</button>
+    <nav class="global-nav">
+        <div class="lang-switch">
+            <button onclick="switchLang('ja')">JP</button>
+            <button onclick="switchLang('en')">EN</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#top">TOP</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#project">PROJECT</a></li>
+            <li><a href="#biography">BIOGRAPHY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- 1. TOP Hero -->
+    <header id="top">
+        <img src="images/top.jpg" alt="Hero Background">
+    </header>
+
+    <!-- 3. ABOUT セクション -->
+    <section id="about">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="two-column">
+            <!-- ABOUT本文は左側 -->
+            <div class="text-content">
+                <div class="lang-ja">
+                    <p class="about-lead">朱樹 音々（Nene Akagi）｜写真家・フォトセラピー研究</p>
+                    <p class="body-copy">
+                        言葉にできない内面や感情を、写真を通して可視化する表現活動を行っています。
+                    </p>
+                    <p class="body-copy">
+                        フォトセラピーを「自分で立つための道具」と捉え、<br>
+                        作品・体験・研究を横断しながら、人が主体的に自分自身と向き合い、自立へと向かうきっかけを創出しています。
+                    </p>
+                    <p class="body-copy">
+                        国内外での展示や受賞歴を持ち、現在はInner Vision Photographyを軸に、<br>
+                        展示・ワークショップ・研究を通して、その社会的価値の確立を目指しています。
+                    </p>
+                </div>
+                <div class="lang-en">
+                    <h3 class="name-ja">Nene Akagi</h3>
+                    <p class="role-ja">Phototherapy Inner Photo Researcher / Photographer</p>
+                    <p class="body-copy">
+                        Focusing on Inner Photo—an expression that explores the sensations and emotions welling up
+                        within people through photography—I visualize how the act of seeing affects the inner self,
+                        exploring the space between art and care.
+                    </p>
+                </div>
+            </div>
+            <!-- 画像は右側 -->
+            <div class="photo-wrapper">
+                <img src="images/about-photo.jpg" alt="About photo" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PORTFOLIO セクション -->
+    <section id="portfolio">
+        <!-- ページ内リンクジャンプと余白を整えるためPORTFOLIOをPROJECTの前に (Navの順序に準拠) -->
+        <h2 class="section-title portfolio-title">PORTFOLIO</h2>
+        <div class="portfolio-grid">
+            <div class="work-card">
+                <a href="images/work1.jpg" target="_blank">
+                    <img src="images/work1.jpg" alt="浄化" />
+                </a>
+                <div class="lang-ja">
+                    <h3>「浄化」</h3>
+                    <p>心に雨がそっと触れた瞬間、光の粒が静かに滲み渡り、私の思い込みを浄化する</p>
+                </div>
+                <div class="lang-en">
+                    <h3>"Purification"</h3>
+                    <p>The moment the rain softly touches my heart, beads of light quietly seep in, purifying my
+                        preconceptions.</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <a href="images/work2.jpg" target="_blank">
+                    <img src="images/work2.jpg" alt="共存" />
+                </a>
+                <div class="lang-ja">
+                    <h3>「共存」</h3>
+                    <p>異なるものがそこに存在するとき、世界は静かに新しい調和を見つけていく</p>
+                </div>
+                <div class="lang-en">
+                    <h3>"Coexistence"</h3>
+                    <p>When different things exist together, the world quietly finds a new harmony.</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <a href="images/work3.jpg" target="_blank">
+                    <img src="images/work3.jpg" alt="再生" />
+                </a>
+                <div class="lang-ja">
+                    <h3>「再生」</h3>
+                    <p>立ち止まった場所で、私は新たな道を見つけて進み出す</p>
+                </div>
+                <div class="lang-en">
+                    <h3>"Rebirth"</h3>
+                    <p>At the place where I stopped, I find a new path and step forward.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PROJECT セクション -->
+    <section id="project">
+        <h2 class="section-title">PROJECT</h2>
+        <div class="two-column">
+            <!-- PROJECT本文は左側 -->
+            <div class="text-content">
+                <div class="lang-ja">
+                    <p class="body-copy">
+                        Inner Vision Photographyは、言葉にできない内面の感覚や記憶、感情を写真として可視化するプロジェクトです。
+                    </p>
+                    <p class="body-copy">
+                        対話と撮影を通して、自分自身の内側と向き合い、気づきを得る体験を生み出します。
+                    </p>
+                    <p class="body-copy">
+                        フォトセラピーは、誰かに癒されるものではなく、自分で立つための道具です。
+                    </p>
+                </div>
+                <div class="lang-en">
+                    <p class="body-copy">
+                        In this project, we conduct exhibitions, research, and workshops to visualize internal
+                        experiences such as emotions and memories through photography, exploring the intersection of art
+                        and psychology.<br><br>
+                        We welcome collaborations and joint projects with companies, organizations, and research
+                        institutions interested in our activities.
+                    </p>
+                </div>
+            </div>
+            <!-- 画像は右側 -->
+            <div class="photo-wrapper">
+                <img src="images/project-main.JPG" alt="Project image" />
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. BIOGRAPHY セクション -->
+    <section id="biography">
+        <div class="biography">
+            <h2 class="bio-title-large">
+                <span class="lang-ja">Biography</span>
+                <span class="lang-en">Biography</span>
+            </h2>
+            <table class="bio-table">
+                <tr>
+                    <td class="date">2004.6</td>
+                    <td>
+                        <span class="lang-ja">Oita Today グループ展 図録掲載</span>
+                        <span class="lang-en">Oita Today Group Exhibition Catalog Publication</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2005.10</td>
+                    <td>
+                        <span class="lang-ja">第7回 大分県民 芸術文化祭「～あの日の記憶を辿って～」企画個展</span>
+                        <span class="lang-en">7th Oita Prefectural Arts and Culture Festival "~Tracing Memories of That
+                            Day~" Solo Exhibition</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date"></td>
+                    <td>
+                        <span class="lang-ja">「ゆっくり Step and Breath autumn」グループ展</span>
+                        <span class="lang-en">"Slowly Step and Breath autumn" Group Exhibition</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2006.8</td>
+                    <td>
+                        <span class="lang-ja">「ダツラ24」個展</span>
+                        <span class="lang-en">"Datura 24" Solo Exhibition</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2015.4</td>
+                    <td>
+                        <span class="lang-ja">美術書籍「百兵衛」掲載</span>
+                        <span class="lang-en">Published in Art Book "Hyakubei"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2015.7</td>
+                    <td>
+                        <span class="lang-ja">マドレーヌ寺院「恒久平和展」展示</span>
+                        <span class="lang-en">Exhibited at La Madeleine "Permanent Peace Exhibition"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2015.11</td>
+                    <td>
+                        <span class="lang-ja">World Women's Photo Exhibition「包まれた別府」</span>
+                        <span class="lang-en">World Women's Photo Exhibition "Wrapped Beppu"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.2</td>
+                    <td>
+                        <span class="lang-ja">第10回 モナコ・日本芸術祭2016 展示「芸術創造賞」受賞</span>
+                        <span class="lang-en">10th Monaco-Japan Art Festival 2016 Exhibition, "Artistic Creation
+                            Award"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.3</td>
+                    <td>
+                        <span class="lang-ja">Art Maison Selection「ある視点」～多層な日本美術を検証する～ 企画展</span>
+                        <span class="lang-en">Art Maison Selection "A Certain Perspective" ~Examining Multi-layered
+                            Japanese Art~ Exhibition</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.7</td>
+                    <td>
+                        <span class="lang-ja">第1回 アートインターナショナルプロジェクト 出展（テーマ：ポストヒューマン 人類進化）</span>
+                        <span class="lang-en">1st Art International Project Exhibition (Theme: Posthuman Human
+                            Evolution)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.7</td>
+                    <td>
+                        <span class="lang-ja">ユネスコ公認 国際美術連盟 モナコ公国委員会に永久収蔵</span>
+                        <span class="lang-en">Permanent collection of the UNESCO-recognized International Association of
+                            Art, Monaco National Committee</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.11</td>
+                    <td>
+                        <span class="lang-ja">Design Festa Vol.44 写真展示「Being Human Being」</span>
+                        <span class="lang-en">Design Festa Vol.44 Photo Exhibition "Being Human Being"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2016.12</td>
+                    <td>
+                        <span class="lang-ja">スペイン彫刻村にて名前刻印（バジェ・デ・ロス・スエニョス財団）</span>
+                        <span class="lang-en">Name engraved at Spanish Sculpture Village (Valle de los Sueños
+                            Foundation)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2017.2</td>
+                    <td>
+                        <span class="lang-ja">第11回 モナコ・日本芸術祭「造形芸術文化賞」受賞</span>
+                        <span class="lang-en">11th Monaco-Japan Art Festival, "Plastic Arts Culture Award"</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2017.4</td>
+                    <td>
+                        <span class="lang-ja">ART MAISON INTERNATIONAL Vol.21 掲載</span>
+                        <span class="lang-en">Published in ART MAISON INTERNATIONAL Vol.21</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2017.10</td>
+                    <td>
+                        <span class="lang-ja">A.M.S.C 芸術家会員</span>
+                        <span class="lang-en">A.M.S.C Artist Member</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="date">2026.1-2</td>
+                    <td>
+                        <span class="lang-ja">Fine Art Photography Exhibition Vol.9 出展</span>
+                        <span class="lang-en">Fine Art Photography Exhibition Vol.9</span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- 7. CONTACT セクション -->
+    <section id="contact">
+        <div class="contact">
+            <h2 class="contact-title-large">
+                <span class="lang-ja">Contact</span>
+                <span class="lang-en">Contact</span>
+            </h2>
+            <div class="lang-ja">
+                <p>
+                    研究・福祉・文化領域に関するご相談や、展示・ワークショップ・企画に関するお問い合わせは、こちらからご連絡ください。
+                </p>
+            </div>
+            <div class="lang-en">
+                <p>
+                    For consultations regarding research, welfare, and cultural fields, or inquiries about exhibitions,
+                    workshops, and planning, please contact us here.
+                </p>
+            </div>
+
+            <!-- FontAwesome Icons for the contact links -->
+            <div class="contact-links">
+                <a href="mailto:neneakagi@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.instagram.com/neneakagi" target="_blank" rel="noopener noreferrer"
+                    title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/18aqVX7DYu/?mibextid=wwXIfr" target="_blank"
+                    rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/neneakagi" target="_blank" rel="noopener noreferrer"
+                    title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+
+            <div class="footer-copy">
+                © 2026
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal HTML -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modalImage" src="" alt="Expanded Image">
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hamburger Menu Logic
+            const menuToggle = document.querySelector('.menu-toggle');
+            const globalNav = document.querySelector('.global-nav');
+            menuToggle.addEventListener('click', () => {
+                globalNav.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    globalNav.classList.remove('active');
+                });
+            });
+
+            // Modal Logic
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.querySelector('.modal-close');
+
+            // Open modal
+            document.querySelectorAll('.work-card a').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    modalImg.src = this.getAttribute('href');
+                    modal.classList.add('active');
+                    document.body.classList.add('modal-open'); // scroll lock
+                });
+            });
+
+            // Close modal
+            const closeModal = () => {
+                modal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+
+        function switchLang(lang) {
+            document.querySelectorAll('.lang-ja, .lang-en').forEach(el => {
+                if (el.classList.contains('lang-' + lang)) {
+                    el.style.display = (el.tagName.toLowerCase() === 'span') ? 'inline' : 'block';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
