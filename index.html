@@ -387,9 +387,17 @@
             }
         }
 
-       @media (max-width: 640px) {
+      @media (max-width: 640px) {
   #top {
-    height: 60vh;
+    height: 45vh;
+    min-height: 320px;
+  }
+
+  #top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   #contact {
@@ -405,7 +413,19 @@
   .footer-copy {
     text-align: center;
   }
+
+  .menu-toggle {
+    display: block;
+  }
 }
+    height: 60vh;
+  }
+
+  #contact {
+    text-align: center;
+  }
+
+
             .menu-toggle {
                 display: block;
             }
