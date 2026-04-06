@@ -382,7 +382,7 @@ footer p {
 <!-- HOME -->
 <section id="home">
   <div class="home-bg">
-    <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?w=1600&q=80" alt="" />
+    <img src="images/top.jpg" alt="Top visual" />
   </div>
   <div class="home-overlay"></div>
   <div class="home-content">
@@ -415,7 +415,7 @@ footer p {
         <p class="en">Through this practice, I explore the territory between art and psychology as an expression toward self-understanding and autonomous stress management.</p>
       </div>
       <div class="about-photo reveal">
-        <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&q=80" alt="朱樹 音々" />
+       <img src="images/about-photo.jpg" alt="About photo" alt="朱樹 音々" />
       </div>
     </div>
   </div>
@@ -434,7 +434,7 @@ footer p {
     <div class="portfolio-grid">
       <div class="p-item reveal" onclick="openLB(0)">
         <div class="p-item-img">
-          <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&q=80" alt="浄化" />
+         <img src="images/work1.jpg" alt="浄化" />
         </div>
         <div class="p-overlay"><span>VIEW</span></div>
         <div class="p-caption">
@@ -445,7 +445,7 @@ footer p {
       </div>
       <div class="p-item reveal" onclick="openLB(1)">
         <div class="p-item-img">
-          <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc31?w=800&q=80" alt="共存" />
+       <img src="images/work2.jpg" alt="共存" />
         </div>
         <div class="p-overlay"><span>VIEW</span></div>
         <div class="p-caption">
@@ -456,7 +456,7 @@ footer p {
       </div>
       <div class="p-item reveal" onclick="openLB(2)">
         <div class="p-item-img">
-          <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&q=80" alt="再生" />
+         <img src="images/work3.jpg" alt="再生" />
         </div>
         <div class="p-overlay"><span>VIEW</span></div>
         <div class="p-caption">
@@ -475,7 +475,7 @@ footer p {
     <div class="ghost-label">Project</div>
     <div class="project-wrap">
       <div class="project-photo reveal">
-        <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?w=800&q=80" alt="Project" />
+       <img src="images/project-main.jpg" alt="Project image alt="Project" />
       </div>
       <div class="project-text reveal">
         <h2>Inner Vision<br>Photography</h2>
@@ -612,13 +612,13 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const lbData = [
-  { src:'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1400&q=90',
+  { src:'images/work1.jpg,
     jp:{ t:'「浄化」', d:'心に雨がそっと触れた瞬間、光の粒が静かに澄み渡り、私の思い込みを浄化する' },
     en:{ t:'"Purification"', d:'The moment rain gently touched my heart, particles of light quietly cleared, purifying my assumptions.' }},
-  { src:'https://images.unsplash.com/photo-1490750967868-88df5691cc31?w=1400&q=90',
+  { src:'images/work2,jpg',
     jp:{ t:'「共存」', d:'異なるものがそこに存在するとき、世界は静かに新しい調和を見つけていく' },
     en:{ t:'"Coexistence"', d:'When different things coexist, the world quietly discovers a new harmony.' }},
-  { src:'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=1400&q=90',
+  { src:'images/work3.jpg',
     jp:{ t:'「再生」', d:'立ち止まった場所で、私は新たな道を見つけて進み出す' },
     en:{ t:'"Regeneration"', d:'At the place where I stood still, I found a new path and moved forward.' }}
 ];
