@@ -1,922 +1,643 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>朱樹 音々 | Nene Akagi</title>
-  <meta name="description" content="朱樹 音々（Nene Akagi）のポートフォリオサイト" />
-  <style>
-    :root {
-      --bg: #f5f5f3;
-      --text: #333;
-      --muted: #666;
-      --line: #ddd;
-      --white: #fff;
-      --max: 1120px;
-      --header-h: 74px;
-      --section-space: 96px;
-      --radius: 18px;
-      --shadow: 0 10px 30px rgba(0,0,0,0.05);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
-      line-height: 1.9;
-      letter-spacing: 0.02em;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    .lang-en {
-      display: none;
-    }
-
-    body.en .lang-ja {
-      display: none !important;
-    }
-
-    body.en .lang-en {
-      display: inline !important;
-    }
-
-    body.en .lang-en.block {
-      display: block !important;
-    }
-
-    body.en .lang-ja.block {
-      display: none !important;
-    }
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      height: var(--header-h);
-      background: rgba(245,245,243,0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .header-inner {
-      max-width: var(--max);
-      height: 100%;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 14px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .logo strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      margin-left: auto;
-    }
-
-    .lang-switch {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .lang-btn {
-      border: 1px solid var(--line);
-      background: transparent;
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 6px 12px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-
-    .lang-btn.active,
-    .lang-btn:hover {
-      background: var(--white);
-      color: var(--text);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .nav a {
-      font-size: 14px;
-      color: var(--muted);
-      transition: color 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .nav a:hover {
-      color: var(--text);
-    }
-
-    .menu-toggle {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--white);
-      cursor: pointer;
-      position: relative;
-      padding: 0;
-      flex-shrink: 0;
-    }
-
-    .menu-toggle span,
-    .menu-toggle::before,
-    .menu-toggle::after {
-      content: "";
-      position: absolute;
-      left: 11px;
-      width: 18px;
-      height: 2px;
-      background: var(--text);
-      transition: 0.25s ease;
-    }
-
-    .menu-toggle span { top: 20px; }
-    .menu-toggle::before { top: 14px; }
-    .menu-toggle::after { top: 26px; }
-
-    .menu-toggle.active span {
-      opacity: 0;
-    }
-
-    .menu-toggle.active::before {
-      top: 20px;
-      transform: rotate(45deg);
-    }
-
-    .menu-toggle.active::after {
-      top: 20px;
-      transform: rotate(-45deg);
-    }
-
-    .overlay {
-      display: none;
-    }
-
-    .mobile-panel {
-      display: none;
-    }
-
-    .section {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: var(--section-space) 24px 0;
-    }
-
-    .section-title {
-      margin: 0 0 38px;
-      font-size: clamp(40px, 5vw, 62px);
-      line-height: 1.05;
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      color: #666;
-    }
-
-    .hero {
-      padding: 0;
-      max-width: none;
-    }
-
-    .hero-wrap {
-      position: relative;
-      min-height: 70vh;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-media,
-    .hero-media img,
-   .hero-overlay {
-  position: absolute;
-  inset: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>朱樹 音々 | Inner Vision Photography</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@200;300;400&family=Noto+Sans+JP:wght@300;400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:      #f8f5ef;
+  --ivory-dark: #f0ebe0;
+  --ivory-mid:  #ede8de;
+  --text:       #3a3530;
+  --text-mid:   #6b6257;
+  --text-light: #9c9080;
+  --accent:     #8b7355;
+  --line:       rgba(139,115,85,0.18);
+  --white:      #fdfaf5;
 }
-      
-    
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  width: min(100%, var(--max));
-  margin: 0 auto;
-  padding: 110px 24px 70px;
-  color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.16);
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--ivory);
+  color: var(--text);
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  line-height: 1.9;
+  overflow-x: hidden;
 }
-    .hero-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
 
-    .hero-overlay {
-      background: rgba(255,255,255,0.05);
-    }
+/* LANG BAR */
+.lang-bar {
+  position: fixed; top:0; left:0; right:0; z-index:300;
+  display:flex; justify-content:flex-end; align-items:center; gap:6px;
+  padding: 10px 48px;
+  background: rgba(248,245,239,0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.lang-btn {
+  font-family:'Lato',sans-serif; font-size:10px; letter-spacing:0.2em;
+  color:var(--text-light); background:none; border:none; cursor:pointer;
+  padding:3px 8px; transition:color 0.3s;
+}
+.lang-btn.active { color:var(--text); border-bottom:1px solid var(--accent); }
+.lang-sep { color:var(--line); font-size:11px; }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: min(100%, var(--max));
-      margin: 0 auto;
-      padding: 110px 24px 70px;
-      color: #fff;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.16);
-    }
+/* NAV */
+nav {
+  position:fixed; top:37px; left:0; right:0; z-index:299;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 48px;
+  background:rgba(248,245,239,0.96);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  transition:padding 0.4s;
+}
+nav.scrolled { padding:13px 48px; }
+.nav-logo {
+  font-family:'Noto Serif JP',serif; font-size:15px; font-weight:300;
+  letter-spacing:0.12em; color:var(--text); text-decoration:none;
+}
+.nav-links { list-style:none; display:flex; gap:40px; align-items:center; }
+.nav-links a {
+  font-family:'Lato',sans-serif; font-size:10px; letter-spacing:0.22em;
+  text-transform:uppercase; color:var(--text-mid); text-decoration:none;
+  position:relative; transition:color 0.3s;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-4px; left:0;
+  width:0; height:1px; background:var(--accent); transition:width 0.35s;
+}
+.nav-links a:hover { color:var(--text); }
+.nav-links a:hover::after { width:100%; }
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  cursor:pointer; background:none; border:none; padding:4px;
+}
+.hamburger span { display:block; width:22px; height:1px; background:var(--text); transition:all 0.3s; }
 
-    .hero-kicker {
-      margin: 0 0 18px;
-      font-size: clamp(18px, 2vw, 28px);
-      font-weight: 300;
-    }
+/* LANG TOGGLE */
+.en { display:none; }
+body.lang-en .jp { display:none; }
+body.lang-en .en { display:revert; }
+span.en { display:none; }
+span.jp { display:inline; }
+body.lang-en span.en { display:inline; }
+body.lang-en span.jp { display:none; }
 
-    .hero-name {
-      margin: 0;
-      font-size: clamp(52px, 8vw, 112px);
-      line-height: 1.02;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-    }
+/* REVEAL */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.reveal {
+  opacity:0; transform:translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.reveal.visible { opacity:1; transform:none; }
 
-    .hero-copy {
-      margin-top: 20px;
-      max-width: 720px;
-      font-size: clamp(20px, 2vw, 30px);
-      line-height: 1.6;
-      font-weight: 300;
-    }
+/* ═══ HOME ═══ */
+#home {
+  height:100vh; display:flex; align-items:center;
+  position:relative; overflow:hidden;
+}
+.home-bg {
+  position:absolute; inset:0; background:var(--ivory-dark); overflow:hidden;
+}
+.home-bg img {
+  width:100%; height:100%; object-fit:cover; object-position:center 30%;
+  opacity:0.5; mix-blend-mode:multiply; filter:saturate(0.65) brightness(1.1);
+}
+.home-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(248,245,239,0.78) 0%, rgba(248,245,239,0.08) 100%);
+}
+.home-content {
+  position:relative; z-index:2; padding:0 10vw;
+}
+.home-role {
+  font-family:'Lato',sans-serif; font-size:11px; letter-spacing:0.3em;
+  color:var(--text-mid); margin-bottom:20px;
+  opacity:0; animation:fadeUp 1s 0.4s forwards;
+}
+.home-name {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(40px,6vw,72px); font-weight:200;
+  letter-spacing:0.2em; line-height:1.15; color:var(--text); margin-bottom:22px;
+  opacity:0; animation:fadeUp 1s 0.65s forwards;
+}
+.home-name-en {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(28px,4vw,52px); font-weight:300; font-style:italic;
+  letter-spacing:0.08em; color:var(--text); margin-bottom:22px;
+  opacity:0; animation:fadeUp 1s 0.65s forwards;
+}
+.home-tagline {
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(13px,1.6vw,16px); color:var(--text-mid); letter-spacing:0.06em;
+  opacity:0; animation:fadeUp 1s 0.9s forwards;
+}
+.home-scroll {
+  position:absolute; bottom:44px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  opacity:0; animation:fadeUp 1s 1.5s forwards;
+}
+.home-scroll span {
+  font-family:'Lato',sans-serif; font-size:9px; letter-spacing:0.3em; color:var(--text-light);
+}
+.scroll-line {
+  width:1px; height:56px;
+  background:linear-gradient(to bottom, var(--accent), transparent);
+  animation:pulseLine 2s 2s infinite;
+}
+@keyframes pulseLine {
+  0%   { transform:scaleY(0); transform-origin:top; }
+  50%  { transform:scaleY(1); transform-origin:top; }
+  51%  { transform:scaleY(1); transform-origin:bottom; }
+  100% { transform:scaleY(0); transform-origin:bottom; }
+}
 
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      align-items: start;
-    }
+/* SHARED */
+section { padding:120px 0; }
+.container { max-width:1120px; margin:0 auto; padding:0 48px; }
+.ghost-label {
+  font-family:'Lato',sans-serif;
+  font-size:clamp(56px,9vw,110px); font-weight:300; letter-spacing:0.06em;
+  color:rgba(139,115,85,0.07); text-align:right; line-height:1;
+  margin-bottom:-30px; position:relative; z-index:0; user-select:none;
+}
+.section-head { position:relative; z-index:1; margin-bottom:64px; }
+.section-head h2 {
+  font-family:'Noto Serif JP',serif; font-size:20px; font-weight:300;
+  letter-spacing:0.18em; color:var(--text);
+}
+.section-head .sub {
+  font-family:'Lato',sans-serif; font-size:10px; letter-spacing:0.22em;
+  color:var(--text-light); margin-top:6px;
+}
+.rule { width:36px; height:1px; background:var(--accent); margin-top:18px; }
 
-    .body-copy {
-      font-size: 17px;
-      color: #4f4f4f;
-    }
+/* ═══ ABOUT ═══ */
+#about { background:var(--white); }
+.about-wrap {
+  display:grid; grid-template-columns:1fr 1fr; gap:80px;
+  align-items:center; position:relative; z-index:1;
+}
+.about-text h2 {
+  font-family:'Noto Serif JP',serif; font-size:26px; font-weight:300;
+  letter-spacing:0.15em; margin-bottom:4px; color:var(--text);
+}
+.about-text .role-line {
+  font-family:'Lato',sans-serif; font-size:11px; letter-spacing:0.12em;
+  color:var(--text-light); margin-bottom:36px;
+}
+.about-text p { font-size:13.5px; color:var(--text-mid); line-height:2.3; margin-bottom:18px; }
+.about-photo { position:relative; }
+.about-photo img {
+  width:100%; height:430px; object-fit:cover;
+  object-position:center 20%; display:block;
+}
+.about-photo::after {
+  content:''; position:absolute;
+  top:12px; right:-12px; bottom:-12px; left:12px;
+  border:1px solid rgba(139,115,85,0.22); z-index:-1;
+}
 
-    .body-copy p {
-      margin: 0 0 22px;
-    }
+/* ═══ PORTFOLIO ═══ */
+#portfolio { background:var(--ivory); }
+.portfolio-grid {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:36px;
+  position:relative; z-index:1;
+}
+.p-item { cursor:pointer; position:relative; overflow:hidden; }
+.p-item-img { overflow:hidden; height:220px; }
+.p-item-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform 0.7s ease, filter 0.5s;
+  filter:saturate(0.85);
+}
+.p-item:hover .p-item-img img { transform:scale(1.06); filter:saturate(1.05); }
+.p-overlay {
+  position:absolute; inset:0 0 auto 0; height:220px;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(58,53,48,0); transition:background 0.4s;
+}
+.p-item:hover .p-overlay { background:rgba(58,53,48,0.2); }
+.p-overlay span {
+  font-family:'Lato',sans-serif; font-size:9px; letter-spacing:0.3em;
+  color:rgba(253,250,245,0); transition:color 0.4s;
+}
+.p-item:hover .p-overlay span { color:rgba(253,250,245,0.9); }
+.p-caption { padding:18px 0 0; }
+.p-caption h3 {
+  font-family:'Noto Serif JP',serif; font-size:15px; font-weight:300;
+  letter-spacing:0.12em; color:var(--text); margin-bottom:10px;
+}
+.p-caption p { font-size:11.5px; color:var(--text-light); line-height:1.95; }
 
-    .image-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
+/* LIGHTBOX */
+.lightbox {
+  position:fixed; inset:0; z-index:999;
+  background:rgba(30,26,22,0.94);
+  display:flex; align-items:center; justify-content:center;
+  opacity:0; pointer-events:none; transition:opacity 0.4s;
+}
+.lightbox.open { opacity:1; pointer-events:all; }
+.lb-inner { position:relative; text-align:center; }
+.lb-inner img { max-width:82vw; max-height:72vh; object-fit:contain; display:block; }
+.lb-caption { padding:20px 0 0; }
+.lb-caption h3 {
+  font-family:'Noto Serif JP',serif; font-size:15px; font-weight:300;
+  letter-spacing:0.15em; color:rgba(248,245,239,0.85); margin-bottom:8px;
+}
+.lb-caption p { font-size:11px; color:rgba(248,245,239,0.45); line-height:1.9; }
+.lb-close {
+  position:absolute; top:-48px; right:0;
+  width:40px; height:40px; background:none; border:none; cursor:pointer;
+}
+.lb-close::before, .lb-close::after {
+  content:''; position:absolute; top:50%; left:50%;
+  width:22px; height:1px; background:rgba(248,245,239,0.6);
+}
+.lb-close::before { transform:translate(-50%,-50%) rotate(45deg); }
+.lb-close::after  { transform:translate(-50%,-50%) rotate(-45deg); }
 
-    .image-card img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-    }
+/* ═══ PROJECT ═══ */
+#project { background:var(--ivory-mid); }
+.project-wrap {
+  display:grid; grid-template-columns:1fr 1.5fr; gap:80px;
+  align-items:center; position:relative; z-index:1;
+}
+.project-photo img {
+  width:100%; height:500px; object-fit:cover; display:block; filter:saturate(0.9);
+}
+.project-text h2 {
+  /* gothic sans, text color — NOT gold/italic */
+  font-family:'Noto Sans JP',sans-serif;
+  font-size:28px; font-weight:300;
+  letter-spacing:0.04em; color:var(--text);
+  margin-bottom:36px; line-height:1.5;
+}
+.project-text p { font-size:13.5px; color:var(--text-mid); line-height:2.4; margin-bottom:18px; }
+.project-text strong { color:var(--text); font-weight:400; }
 
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+/* ═══ BIOGRAPHY ═══ */
+#biography { background:var(--white); }
+.bio-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:0 80px;
+  position:relative; z-index:1;
+}
+.bio-row {
+  display:flex; gap:24px; padding:20px 0;
+  border-bottom:1px solid var(--line); align-items:baseline;
+}
+.bio-date {
+  font-family:'Lato',sans-serif; font-size:11px; letter-spacing:0.08em;
+  color:var(--accent); white-space:nowrap; min-width:64px; flex-shrink:0;
+}
+.bio-text { font-size:12.5px; color:var(--text-mid); line-height:1.9; }
 
-    .work-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-    }
+/* ═══ CONTACT ═══ */
+#contact { background:var(--ivory); text-align:center; }
+.contact-wrap { max-width:620px; margin:0 auto; }
+.contact-title {
+  font-family:'Noto Serif JP',serif; font-size:28px; font-weight:300;
+  letter-spacing:0.15em; color:var(--text); margin-bottom:20px;
+}
+.contact-sub { font-size:13px; color:var(--text-mid); line-height:2; margin-bottom:60px; }
+.contact-icons {
+  display:flex; justify-content:center; align-items:flex-start; gap:40px; margin-bottom:16px;
+}
+.c-icon {
+  display:flex; flex-direction:column; align-items:center; gap:10px;
+  color:var(--text-mid); text-decoration:none; transition:color 0.3s, transform 0.3s;
+}
+.c-icon:hover { color:var(--accent); transform:translateY(-4px); }
+.c-icon svg { width:30px; height:30px; }
+.c-label {
+  font-family:'Lato',sans-serif; font-size:9px; letter-spacing:0.22em; text-transform:uppercase;
+}
+.contact-note {
+  font-family:'Lato',sans-serif; font-size:10px; letter-spacing:0.15em; color:var(--text-light);
+}
 
-    .work-card img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      cursor: pointer;
-    }
+/* FOOTER */
+footer {
+  padding:28px 48px; border-top:1px solid var(--line);
+  background:var(--ivory); text-align:center;
+}
+footer p {
+  font-family:'Lato',sans-serif; font-size:10px; letter-spacing:0.12em; color:var(--text-light);
+}
 
-    .work-body {
-      padding: 18px 18px 20px;
-    }
-
-    .work-title {
-      margin: 0 0 10px;
-      font-size: 22px;
-      font-weight: 400;
-      color: #555;
-    }
-
-    .work-text {
-      margin: 0;
-      color: #666;
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .bio-wrap {
-      max-width: 920px;
-    }
-
-    .bio-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-
-    .bio-table tr {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .bio-table td {
-      padding: 16px 8px;
-      vertical-align: top;
-    }
-
-    .bio-table .date {
-      width: 130px;
-      color: #777;
-      white-space: nowrap;
-    }
-
-    .contact-box {
-      max-width: 760px;
-      margin: 0 auto;
-      text-align: center;
-      padding-bottom: 110px;
-    }
-
-    .contact-copy {
-      margin: 0 auto 34px;
-      font-size: 17px;
-      color: #555;
-    }
-
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-bottom: 34px;
-    }
-
-    .contact-link {
-      width: 54px;
-      height: 54px;
-      border-radius: 999px;
-      background: var(--white);
-      box-shadow: var(--shadow);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease;
-    }
-
-    .contact-link:hover {
-      transform: translateY(-2px);
-    }
-
-    .contact-link svg {
-      width: 24px;
-      height: 24px;
-      fill: #666;
-    }
-
-    .footer-copy {
-      text-align: center;
-      color: #8d8d8d;
-      font-size: 15px;
-    }
-
-    .footer-copy small {
-      display: block;
-      margin-top: 8px;
-      font-size: 13px;
-      opacity: 0.85;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background: rgba(0,0,0,0.82);
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal img {
-      max-width: min(94vw, 1100px);
-      max-height: 88vh;
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 44px;
-      height: 44px;
-      border: none;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.16);
-      color: #fff;
-      font-size: 28px;
-      line-height: 1;
-      cursor: pointer;
-    }
-
-    @media (max-width: 980px) {
-      .logo {
-        display: none;
-      }
-    }
-
-    @media (max-width: 768px) {
-      :root {
-        --header-h: 70px;
-        --section-space: 78px;
-      }
-
-      html {
-        scroll-padding-top: 84px;
-      }
-
-      .header-inner,
-      .section {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: inline-block;
-      }
-
-      .mobile-panel {
-        display: block;
-        position: fixed;
-        top: var(--header-h);
-        right: -100%;
-        width: min(80vw, 300px);
-        height: calc(100dvh - var(--header-h));
-        background: rgba(255,255,255,0.98);
-        box-shadow: -12px 0 32px rgba(0,0,0,0.08);
-        z-index: 1200;
-        padding: 26px 24px;
-        transition: right 0.28s ease;
-      }
-
-      body.menu-open .mobile-panel {
-        right: 0;
-      }
-
-      .overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 1100;
-        background: rgba(0,0,0,0.14);
-      }
-
-      body.menu-open .overlay {
-        display: block;
-      }
-
-      .mobile-nav {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .mobile-nav a {
-        color: #555;
-        font-size: 17px;
-      }
-
-      .hero-wrap {
-        min-height: 56vh;
-      }
-
-      .hero-content {
-        padding: 96px 18px 50px;
-      }
-
-      .hero-copy {
-        font-size: 18px;
-      }
-
-      .two-col {
-        grid-template-columns: 1fr;
-        gap: 34px;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .bio-table .date {
-        width: 88px;
-        font-size: 13px;
-      }
-
-      .bio-table td {
-        padding: 12px 4px;
-        font-size: 14px;
-      }
-
-      .contact-copy {
-        font-size: 15px;
-      }
-    }
-  </style>
+/* RESPONSIVE */
+@media (max-width:860px) {
+  nav { padding:14px 24px; }
+  .nav-links {
+    display:none; position:fixed; top:100px; left:0; right:0;
+    background:rgba(248,245,239,0.98); flex-direction:column;
+    padding:32px 24px; gap:28px; border-bottom:1px solid var(--line); z-index:298;
+  }
+  .nav-links.open { display:flex; }
+  .hamburger { display:flex; }
+  .about-wrap, .project-wrap { grid-template-columns:1fr; gap:40px; }
+  .portfolio-grid { grid-template-columns:1fr; }
+  .bio-grid { grid-template-columns:1fr; }
+  .ghost-label { font-size:48px; }
+  .container { padding:0 24px; }
+  .lang-bar { padding:10px 24px; }
+}
+</style>
 </head>
-<body>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="logo">
-        <span class="lang-ja"><strong>朱樹 音々</strong> ｜ Photographer / Researcher</span>
-        <span class="lang-en"><strong>Nene Akagi</strong> ｜ Photographer / Researcher</span>
+<body class="lang-ja">
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" id="btnJa" onclick="setLang('ja')">JP</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <span class="jp">朱樹　音々</span>
+    <span class="en">Nene Akagi</span>
+  </a>
+  <button class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home"      onclick="closeMenu()">Home</a></li>
+    <li><a href="#about"     onclick="closeMenu()">About</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#project"   onclick="closeMenu()">Project</a></li>
+    <li><a href="#biography" onclick="closeMenu()">Biography</a></li>
+    <li><a href="#contact"   onclick="closeMenu()">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="home-bg">
+    <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?w=1600&q=80" alt="" />
+  </div>
+  <div class="home-overlay"></div>
+  <div class="home-content">
+    <div class="home-role">Photographer / Researcher</div>
+    <h1 class="home-name jp">朱樹　音々</h1>
+    <h1 class="home-name-en en">Nene Akagi</h1>
+    <p class="home-tagline jp">言葉にできない感情を、写真として可視化する</p>
+    <p class="home-tagline en">Visualizing emotions that cannot be put into words — through photography.</p>
+  </div>
+  <div class="home-scroll">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="ghost-label">about</div>
+    <div class="about-wrap">
+      <div class="about-text reveal">
+        <h2 class="jp">朱樹　音々</h2>
+        <h2 class="en">Nene Akagi</h2>
+        <div class="role-line">Inner Vision Photography / Photographer · Researcher</div>
+        <p class="jp">内面を可視化する写真表現。<br>人の内側にある感情や記憶を、写真を通して外に現し、自分でも気づいていなかった状態に触れるきっかけをつくります。</p>
+        <p class="en">Photography that visualizes the inner world. By bringing emotions and memories to the surface through photography, I create opportunities to encounter states within oneself that have gone unnoticed.</p>
+        <p class="jp">写真を見るという行為そのものが、内面の理解へとつながるプロセスになります。</p>
+        <p class="en">The very act of viewing a photograph becomes a process of understanding one's inner self.</p>
+        <p class="jp">本活動では、自己理解とストレス管理の自立化に向けた表現として、アートと心理のあいだにある領域を探究しています。</p>
+        <p class="en">Through this practice, I explore the territory between art and psychology as an expression toward self-understanding and autonomous stress management.</p>
       </div>
-
-      <div class="header-right">
-        <div class="lang-switch">
-          <button class="lang-btn active" data-lang="ja" type="button">JP</button>
-          <button class="lang-btn" data-lang="en" type="button">EN</button>
-        </div>
-
-        <nav class="nav">
-          <a href="#top">TOP</a>
-          <a href="#about">ABOUT</a>
-          <a href="#portfolio">PORTFOLIO</a>
-          <a href="#project">PROJECT</a>
-          <a href="#biography">BIOGRAPHY</a>
-          <a href="#contact">CONTACT</a>
-        </nav>
-
-        <button class="menu-toggle" type="button" aria-label="menu">
-          <span></span>
-        </button>
+      <div class="about-photo reveal">
+        <img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=800&q=80" alt="朱樹 音々" />
       </div>
     </div>
-  </header>
-
-  <div class="overlay"></div>
-
-  <aside class="mobile-panel">
-    <nav class="mobile-nav">
-      <a href="#top">TOP</a>
-      <a href="#about">ABOUT</a>
-      <a href="#portfolio">PORTFOLIO</a>
-      <a href="#project">PROJECT</a>
-      <a href="#biography">BIOGRAPHY</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </aside>
-
-  <main>
-    <section class="hero" id="top">
-      <div class="hero-wrap">
-        <div class="hero-media">
-          <img src="images/top.jpg" alt="Top visual" />
-        </div>
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-          <p class="hero-kicker">
-            <span class="lang-ja">Photographer / Researcher</span>
-            <span class="lang-en">Photographer / Researcher</span>
-          </p>
-
-          <h1 class="hero-name">
-            <span class="lang-ja">朱樹 音々</span>
-            <span class="lang-en">Nene Akagi</span>
-          </h1>
-
-          <div class="hero-copy">
-            <span class="lang-ja">言葉にできない感情を、写真として可視化する</span>
-            <span class="lang-en">Visualizing emotions that cannot be fully expressed in words</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <h2 class="section-title">ABOUT</h2>
-      <div class="two-col">
-        <div class="body-copy">
-          <div class="lang-ja block">
-            <p>朱樹 音々は、写真を通して内面や感情を可視化する表現活動を行う写真家・研究者です</p>
-            <p>フォトセラピーを「自分で立つための道具」と捉え、作品・体験・研究を横断しながら、人が主体的に自分自身と向き合い、自立へと向かうきっかけを創出しています</p>
-            <p>国内外での展示や受賞歴を持ち、現在は Inner Vision Photography を軸に、展示・ワークショップ・研究を通して、その社会的価値の確立を目指しています</p>
-          </div>
-          <div class="lang-en block">
-            <p>Nene Akagi is a photographer and researcher whose practice explores the visualization of inner states and emotions through photography.</p>
-            <p>She approaches photo therapy as a tool for standing on one’s own feet, creating opportunities for people to face themselves actively through artworks, experiences, and research.</p>
-            <p>With exhibition and award experience in Japan and abroad, she is currently developing Inner Vision Photography through exhibitions, workshops, and research.</p>
-          </div>
-        </div>
-
-        <div class="image-card">
-          <img src="images/about-photo.jpg" alt="About photo" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="portfolio">
-      <h2 class="section-title">PORTFOLIO</h2>
-
-      <div class="portfolio-grid">
-        <article class="work-card">
-          <img src="images/work1.jpg" alt="浄化 / Purification" class="modal-target" />
-          <div class="work-body">
-            <h3 class="work-title">
-              <span class="lang-ja">浄化</span>
-              <span class="lang-en">Purification</span>
-            </h3>
-            <p class="work-text">
-              <span class="lang-ja">心に雨がそっと触れた瞬間、光の粒が静かに滲み渡り、私の思い込みを浄化する</span>
-              <span class="lang-en">At the moment rain softly touches the heart, particles of light spread quietly and wash away fixed assumptions.</span>
-            </p>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <img src="images/work2.jpg" alt="共存 / Coexistence" class="modal-target" />
-          <div class="work-body">
-            <h3 class="work-title">
-              <span class="lang-ja">共存</span>
-              <span class="lang-en">Coexistence</span>
-            </h3>
-            <p class="work-text">
-              <span class="lang-ja">異なるものがそこに存在するとき、世界は静かに新しい調和を見つけていく</span>
-              <span class="lang-en">When differences are allowed to exist, the world quietly finds a new form of harmony.</span>
-            </p>
-          </div>
-        </article>
-
-        <article class="work-card">
-          <img src="images/work3.jpg" alt="再生 / Rebirth" class="modal-target" />
-          <div class="work-body">
-            <h3 class="work-title">
-              <span class="lang-ja">再生</span>
-              <span class="lang-en">Rebirth</span>
-            </h3>
-            <p class="work-text">
-              <span class="lang-ja">立ち止まった場所で、私は新たな道を見つけて進み出す</span>
-              <span class="lang-en">At a place where I once stopped, I discover a new path and begin to move forward.</span>
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="project">
-      <h2 class="section-title">PROJECT</h2>
-      <div class="two-col">
-        <div class="body-copy">
-          <div class="lang-ja block">
-            <p>Inner Vision Photography は、言葉にできない内面の感覚や記憶、感情を写真として可視化するプロジェクトです</p>
-            <p>対話と撮影を通して、自分自身の内側と向き合い、気づきを得る体験を生み出します</p>
-            <p>フォトセラピーは、誰かに癒されるものではなく、自分で立つための道具です</p>
-          </div>
-          <div class="lang-en block">
-            <p>Inner Vision Photography is a project that visualizes inner sensations, memories, and emotions that are difficult to express in words.</p>
-            <p>Through dialogue and photography, it creates an experience of facing one’s inner self and gaining awareness.</p>
-            <p>Photo therapy is not something that heals you from outside, but a tool for standing on your own.</p>
-          </div>
-        </div>
-
-        <div class="image-card">
-          <img src="images/project-main.jpg" alt="Project image" />
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="biography">
-      <h2 class="section-title">BIOGRAPHY</h2>
-      <div class="bio-wrap">
-        <table class="bio-table">
-          <tr>
-            <td class="date">2004.6</td>
-            <td>
-              <span class="lang-ja">大分トゥデイ グループ展 図録掲載</span>
-              <span class="lang-en">Featured in Oita Today group exhibition catalogue</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="date">2005.10</td>
-            <td>
-              <span class="lang-ja">第7回大分県民芸術文化祭 個展「その日の記憶を辿る」</span>
-              <span class="lang-en">7th Oita Prefectural Arts Festival, solo exhibition “Tracing Memories of That Day”</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="date">2015.11</td>
-            <td>
-              <span class="lang-ja">世界女性写真展「包まれた別府」出展</span>
-              <span class="lang-en">Exhibited “Wrapped Beppu” at World Women’s Photo Exhibition</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="date">2016.2</td>
-            <td>
-              <span class="lang-ja">第10回モナコ・日本芸術祭 芸術創造賞 受賞</span>
-              <span class="lang-en">Received Art Creation Award at 10th Monaco–Japan Art Festival</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="date">2016.7</td>
-            <td>
-              <span class="lang-ja">モナコ委員会に作品が恒久保存</span>
-              <span class="lang-en">Work permanently archived by Monaco Committee of an international artists federation</span>
-            </td>
-          </tr>
-          <tr>
-            <td class="date">2017.2</td>
-            <td>
-              <span class="lang-ja">第11回モナコ・日本芸術祭 造形芸術文化賞 受賞</span>
-              <span class="lang-en">Received Plastic Arts and Culture Award at 11th Monaco–Japan Art Festival</span>
-            </td>
-          </tr>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="contact-box">
-        <h2 class="section-title">CONTACT</h2>
-
-        <p class="contact-copy lang-ja block">
-          研究・福祉・文化領域に関するご相談や、展示・ワークショップ・企画に関するお問い合わせは、こちらからご連絡ください
-        </p>
-        <p class="contact-copy lang-en block">
-          For consultations regarding research, welfare, cultural fields, exhibitions, workshops, and planning, please contact us here.
-        </p>
-
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:neneakagi@gmail.com" aria-label="email">
-            <svg viewBox="0 0 24 24"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.2l9 6.3 9-6.3V7H3Zm18 10V9.7l-8.4 5.9a1 1 0 0 1-1.2 0L3 9.7V17h18Z"/></svg>
-          </a>
-
-          <a class="contact-link" href="https://www.instagram.com/neneakagi" target="_blank" rel="noopener noreferrer" aria-label="instagram">
-            <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5Zm5.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"/></svg>
-          </a>
-
-          <a class="contact-link" href="https://www.facebook.com/share/18aqVX7DYu/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="facebook">
-            <svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.6-1.6H16.7V4.8c-.3 0-1.2-.1-2.3-.1-2.2 0-3.8 1.3-3.8 3.8V11H8v3h2.6v8h2.9Z"/></svg>
-          </a>
-
-          <a class="contact-link" href="https://www.linkedin.com/in/neneakagi" target="_blank" rel="noopener noreferrer" aria-label="linkedin">
-            <svg viewBox="0 0 24 24"><path d="M4.98 3.5A1.75 1.75 0 1 1 3.23 5.25 1.75 1.75 0 0 1 4.98 3.5ZM3.5 8h3V20h-3Zm5 0h2.88v1.64h.04A3.16 3.16 0 0 1 14.27 8c3.06 0 3.63 2.01 3.63 4.62V20h-3v-6.56c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.69-2.5 3.45V20h-3Z"/></svg>
-          </a>
-        </div>
-
-        <div class="footer-copy">
-          © 2026
-          <small>Supported by AftNeo</small>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div class="modal" id="imageModal">
-    <button class="modal-close" type="button" aria-label="close">×</button>
-    <img src="" alt="Expanded Image" id="modalImage" />
   </div>
+</section>
 
-  <script>
-    const body = document.body;
-    const menuToggle = document.querySelector('.menu-toggle');
-    const overlay = document.querySelector('.overlay');
-    const mobileLinks = document.querySelectorAll('.mobile-nav a');
-    const langButtons = document.querySelectorAll('.lang-btn');
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    const modalClose = document.querySelector('.modal-close');
-    const modalTargets = document.querySelectorAll('.modal-target');
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="ghost-label">PORTFOLIO</div>
+    <div class="section-head reveal">
+      <h2 class="jp">ポートフォリオ</h2>
+      <h2 class="en">Portfolio</h2>
+      <div class="sub">Inner Vision Photography Works</div>
+      <div class="rule"></div>
+    </div>
+    <div class="portfolio-grid">
+      <div class="p-item reveal" onclick="openLB(0)">
+        <div class="p-item-img">
+          <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=800&q=80" alt="浄化" />
+        </div>
+        <div class="p-overlay"><span>VIEW</span></div>
+        <div class="p-caption">
+          <h3>「浄化」</h3>
+          <p class="jp">心に雨がそっと触れた瞬間、光の粒が静かに澄み渡り、私の思い込みを浄化する</p>
+          <p class="en">The moment rain gently touched my heart, particles of light quietly cleared, purifying my assumptions.</p>
+        </div>
+      </div>
+      <div class="p-item reveal" onclick="openLB(1)">
+        <div class="p-item-img">
+          <img src="https://images.unsplash.com/photo-1490750967868-88df5691cc31?w=800&q=80" alt="共存" />
+        </div>
+        <div class="p-overlay"><span>VIEW</span></div>
+        <div class="p-caption">
+          <h3>「共存」</h3>
+          <p class="jp">異なるものがそこに存在するとき、世界は静かに新しい調和を見つけていく</p>
+          <p class="en">When different things coexist, the world quietly discovers a new harmony.</p>
+        </div>
+      </div>
+      <div class="p-item reveal" onclick="openLB(2)">
+        <div class="p-item-img">
+          <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=800&q=80" alt="再生" />
+        </div>
+        <div class="p-overlay"><span>VIEW</span></div>
+        <div class="p-caption">
+          <h3>「再生」</h3>
+          <p class="jp">立ち止まった場所で、私は新たな道を見つけて進み出す</p>
+          <p class="en">At the place where I stood still, I found a new path and moved forward.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function closeMenu() {
-      body.classList.remove('menu-open');
-      if (menuToggle) menuToggle.classList.remove('active');
-    }
+<!-- PROJECT -->
+<section id="project">
+  <div class="container">
+    <div class="ghost-label">Project</div>
+    <div class="project-wrap">
+      <div class="project-photo reveal">
+        <img src="https://images.unsplash.com/photo-1519669556878-63bdad8a1a49?w=800&q=80" alt="Project" />
+      </div>
+      <div class="project-text reveal">
+        <h2>Inner Vision<br>Photography</h2>
+        <p class="jp"><strong>感情や記憶などの内面的な体験を写真として可視化し、自分自身を理解するための「体験」をつくるプロジェクトです。</strong></p>
+        <p class="en"><strong>A project that visualizes inner experiences — emotions and memories — as photographs, creating opportunities for self-understanding.</strong></p>
+        <p class="jp">本プロジェクトでは、展示・ワークショップ・個別セッション・研究活動を通して、アートと心理の接点を社会に実装していきます。</p>
+        <p class="en">Through exhibitions, workshops, individual sessions, and research activities, I work to implement the intersection of art and psychology in society.</p>
+        <p class="jp">また、医療・福祉・教育・企業との連携を視野に入れ、「ストレス管理の自立化」というテーマのもと、個人が自分自身を理解し整えるための新しいアプローチを提案しています。</p>
+        <p class="en">With an eye toward collaboration in healthcare, welfare, education, and business, I propose new approaches under the theme of "autonomous stress management."</p>
+        <p class="jp">国内外の企業・研究機関との共同プロジェクトや講演のご依頼を受け付けています。</p>
+        <p class="en">Accepting requests for collaborative projects and lectures from organizations both in Japan and internationally.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    function openMenu() {
-      body.classList.add('menu-open');
-      if (menuToggle) menuToggle.classList.add('active');
-    }
+<!-- BIOGRAPHY -->
+<section id="biography">
+  <div class="container">
+    <div class="ghost-label">Biography</div>
+    <div class="section-head reveal">
+      <h2 class="jp">写真活動経歴</h2>
+      <h2 class="en">Photography Career</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="bio-grid">
+      <div class="bio-row reveal"><div class="bio-date">2004.6</div><div class="bio-text jp">Oita Today グループ展　図録掲載</div><div class="bio-text en">Oita Today Group Exhibition — Catalog Published</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2016.7</div><div class="bio-text jp">第1回アートインターナショナルプロジェクト出展<br>テーマ：ポストヒューマン「人類進化」</div><div class="bio-text en">1st Art International Project Exhibition<br>Theme: Post-Human "Human Evolution"</div></div>
 
-    if (menuToggle) {
-      menuToggle.addEventListener('click', () => {
-        if (body.classList.contains('menu-open')) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-    }
+      <div class="bio-row reveal"><div class="bio-date">2005.10</div><div class="bio-text jp">第7回 大分県民芸術文化祭<br>「〜あの日の記憶を辿って〜」企画個展</div><div class="bio-text en">7th Oita Citizens Art Festival<br>Solo Exhibition "Tracing the Memory of That Day"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2016.7</div><div class="bio-text jp">ユネスコ公認国際美術連盟<br>モナコ公国委員会に永久収蔵</div><div class="bio-text en">Permanently Collected by the UNESCO-recognized<br>International Art Federation, Monaco Committee</div></div>
 
-    if (overlay) {
-      overlay.addEventListener('click', closeMenu);
-    }
+      <div class="bio-row reveal"><div class="bio-date">2005.10</div><div class="bio-text jp">「ゆっくり Step and Breath autumn」グループ展</div><div class="bio-text en">Group Exhibition "Slowly Step and Breath Autumn"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2016.11</div><div class="bio-text jp">Design Festa Vol.44<br>写真展示「Being Human Being」</div><div class="bio-text en">Design Festa Vol.44<br>Photo Exhibition "Being Human Being"</div></div>
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+      <div class="bio-row reveal"><div class="bio-date">2006.8</div><div class="bio-text jp">「ダツラ24」個展</div><div class="bio-text en">Solo Exhibition "Datura 24"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2016.12</div><div class="bio-text jp">バジェ・デ・ロス・スエニョス財団により<br>スペインの彫刻村にて名前を刻印される</div><div class="bio-text en">Name Inscribed at a Sculpture Village in Spain<br>by the Baje de los Suenos Foundation</div></div>
 
-    langButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        langButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-        body.classList.toggle('en', button.dataset.lang === 'en');
-      });
-    });
+      <div class="bio-row reveal"><div class="bio-date">2015.4</div><div class="bio-text jp">美術書籍「百兵衛」掲載</div><div class="bio-text en">Published in Art Book "Hyobee"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2017.2</div><div class="bio-text jp">第11回 モナコ・日本芸術祭<br>「造形芸術文化賞」受賞</div><div class="bio-text en">11th Monaco-Japan Art Festival<br>Awarded "Visual Arts Cultural Prize"</div></div>
 
-    modalTargets.forEach(img => {
-      img.addEventListener('click', () => {
-        modal.classList.add('open');
-        modalImage.src = img.src;
-        modalImage.alt = img.alt;
-      });
-    });
+      <div class="bio-row reveal"><div class="bio-date">2015.7</div><div class="bio-text jp">マドレーヌ寺院「恒久平和展」展示</div><div class="bio-text en">Exhibition at La Madeleine — "Permanent Peace Exhibition"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2017.4</div><div class="bio-text jp">ART MAISON INTERNATIONAL Vol.21 掲載</div><div class="bio-text en">Published in ART MAISON INTERNATIONAL Vol.21</div></div>
 
-    function closeModal() {
-      modal.classList.remove('open');
-      modalImage.src = '';
-      modalImage.alt = 'Expanded Image';
-    }
+      <div class="bio-row reveal"><div class="bio-date">2015.11</div><div class="bio-text jp">World Women's Photo Exhibition<br>「包まれた別府」</div><div class="bio-text en">World Women's Photo Exhibition<br>"Embraced Beppu"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2017.10</div><div class="bio-text jp">A.M.S.C 芸術家会員</div><div class="bio-text en">A.M.S.C Artist Member</div></div>
 
-    if (modalClose) {
-      modalClose.addEventListener('click', closeModal);
-    }
+      <div class="bio-row reveal"><div class="bio-date">2016.2</div><div class="bio-text jp">〜モナコ日本国交樹立10周年記念事業〜<br>第10回 モナコ・日本芸術祭2016<br>「芸術創造賞」受賞</div><div class="bio-text en">10th Monaco-Japan Art Festival 2016<br>Awarded "Artistic Creation Prize"</div></div>
+      <div class="bio-row reveal"><div class="bio-date">2026.1–2</div><div class="bio-text jp">Fine Art Photography Exhibition Vol.9<br>横浜赤レンガ倉庫 出展（日本文藝主催）</div><div class="bio-text en">Fine Art Photography Exhibition Vol.9<br>Yokohama Red Brick Warehouse (Nihon Bungei)</div></div>
 
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-    }
+      <div class="bio-row reveal"><div class="bio-date">2016.3</div><div class="bio-text jp">Art Maison Selection「ある視点」<br>〜多層な日本美術を検証する〜 企画展</div><div class="bio-text en">Art Maison Selection<br>"A Certain Perspective: Verifying Multilayered Japanese Art"</div></div>
+    </div>
+  </div>
+</section>
 
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
-        closeModal();
-      }
-    });
-  </script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-wrap reveal">
+      <h2 class="contact-title">Contact</h2>
+      <p class="contact-sub jp">個別セッション・講演・共同研究のご依頼はこちらからお問い合わせください</p>
+      <p class="contact-sub en">For individual sessions, lectures, and collaborative research inquiries, please reach out via the channels below.</p>
+      <div class="contact-icons">
+        <a href="mailto:" class="c-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          <span class="c-label">Email</span>
+        </a>
+        <a href="#" class="c-icon" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="c-label">Instagram</span>
+        </a>
+        <a href="#" class="c-icon" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+          <span class="c-label">Facebook</span>
+        </a>
+        <a href="#" class="c-icon" target="_blank">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          <span class="c-label">LinkedIn</span>
+        </a>
+      </div>
+      <p class="contact-note">Follow or contact</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© Nene Akagi &nbsp;·&nbsp; Inner Vision Photography &nbsp;·&nbsp; Supported by AftNeo</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLB(event)">
+  <div class="lb-inner">
+    <button class="lb-close" onclick="closeLB()"></button>
+    <img id="lb-img" src="" alt="" />
+    <div class="lb-caption">
+      <h3 id="lb-title"></h3>
+      <p id="lb-desc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+function setLang(lang) {
+  document.body.className = 'lang-' + lang;
+  document.getElementById('btnJa').classList.toggle('active', lang === 'ja');
+  document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+});
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+function closeMenu() { document.getElementById('navLinks').classList.remove('open'); }
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 70);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const lbData = [
+  { src:'https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=1400&q=90',
+    jp:{ t:'「浄化」', d:'心に雨がそっと触れた瞬間、光の粒が静かに澄み渡り、私の思い込みを浄化する' },
+    en:{ t:'"Purification"', d:'The moment rain gently touched my heart, particles of light quietly cleared, purifying my assumptions.' }},
+  { src:'https://images.unsplash.com/photo-1490750967868-88df5691cc31?w=1400&q=90',
+    jp:{ t:'「共存」', d:'異なるものがそこに存在するとき、世界は静かに新しい調和を見つけていく' },
+    en:{ t:'"Coexistence"', d:'When different things coexist, the world quietly discovers a new harmony.' }},
+  { src:'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=1400&q=90',
+    jp:{ t:'「再生」', d:'立ち止まった場所で、私は新たな道を見つけて進み出す' },
+    en:{ t:'"Regeneration"', d:'At the place where I stood still, I found a new path and moved forward.' }}
+];
+function openLB(i) {
+  const d = lbData[i];
+  const lang = document.body.classList.contains('lang-en') ? 'en' : 'jp';
+  document.getElementById('lb-img').src = d.src;
+  document.getElementById('lb-title').textContent = d[lang].t;
+  document.getElementById('lb-desc').textContent  = d[lang].d;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB(e) {
+  if (!e || e.target.id === 'lightbox' || e.target.closest('.lb-close')) {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB({}); });
+</script>
 </body>
 </html>
