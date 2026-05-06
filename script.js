@@ -138,3 +138,20 @@
   });
 
 })();
+// Mobile hamburger menu
+const hamburger = document.getElementById("hamburger");
+const navList = document.querySelector(".nav-list");
+
+if (hamburger && navList) {
+  hamburger.addEventListener("click", () => {
+    navList.classList.toggle("active");
+    hamburger.classList.toggle("active");
+  });
+
+  navList.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navList.classList.remove("active");
+      hamburger.classList.remove("active");
+    });
+  });
+}
