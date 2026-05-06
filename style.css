@@ -986,3 +986,187 @@ ol {
     line-height: 2;
   }
 }
+/* ==============================
+   Mobile Fix / Professional Layout
+   2026-05
+============================== */
+
+@media screen and (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* メニューをハンバーガー化 */
+  .nav-list {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 78%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+    z-index: 999;
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .nav-list li a {
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hamburger {
+    display: flex;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    width: 34px;
+    height: 24px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+  }
+
+  .ham-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #333;
+  }
+
+  /* ABOUT：写真を上、文章を下 */
+  .about-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding: 4rem 1.6rem;
+  }
+
+  .about-img-wrap {
+    width: 100%;
+  }
+
+  .about-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .about-text {
+    width: 100%;
+  }
+
+  .about-text h2,
+  .about-text p {
+    writing-mode: horizontal-tb;
+    text-align: left;
+    line-height: 1.9;
+  }
+
+  /* PROJECT：写真を上、文章を下 */
+  .project-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 4rem 1.6rem;
+  }
+
+  .project-img-wrap {
+    width: 100%;
+    order: 1;
+  }
+
+  .project-img-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .project-text {
+    width: 100%;
+    order: 2;
+  }
+
+  .project-text h2,
+  .project-text p {
+    writing-mode: horizontal-tb;
+    text-align: left;
+    line-height: 1.9;
+  }
+
+  /* PORTFOLIO：縦並び */
+  .portfolio-wrap,
+  .portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 4rem 1.6rem;
+  }
+
+  .pf-item,
+  .portfolio-item {
+    width: 100%;
+  }
+
+  .pf-item img,
+  .portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .pf-title,
+  .pf-desc {
+    writing-mode: horizontal-tb;
+    text-align: left;
+    line-height: 1.8;
+  }
+
+  /* CONTACT：中央揃え */
+  .contact-wrap {
+    padding: 4rem 1.6rem;
+    text-align: center;
+  }
+
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 3rem auto;
+  }
+
+  .contact-icons a,
+  .contact-icons img,
+  .contact-icons svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .contact-text,
+  .contact-heading,
+  .contact-follow,
+  .site-footer {
+    text-align: center;
+  }
+
+  /* スマホで文字が縦に伸びすぎる問題を止める */
+  p,
+  h1,
+  h2,
+  h3,
+  li {
+    writing-mode: horizontal-tb;
+  }
+}
