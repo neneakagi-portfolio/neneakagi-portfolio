@@ -1171,3 +1171,25 @@ ol {
     writing-mode: horizontal-tb;
   }
 }
+/* Emergency fix: force sections visible */
+.reveal,
+.reveal-child {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Emergency fix: modal should never cover the page */
+.img-modal {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.img-modal.open {
+  display: flex !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  visibility: visible !important;
+}
