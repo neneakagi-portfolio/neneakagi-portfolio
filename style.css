@@ -1193,3 +1193,31 @@ ol {
   pointer-events: auto !important;
   visibility: visible !important;
 }
+/* Emergency publish fix */
+.s-section,
+.s-section-alt,
+.reveal,
+.reveal-child,
+.about-wrap,
+.project-wrap,
+.portfolio-wrap,
+.career-list,
+.contact-wrap {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  display: block !important;
+}
+
+.about-wrap,
+.project-wrap,
+.portfolio-wrap {
+  display: grid !important;
+}
+
+.img-modal {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
